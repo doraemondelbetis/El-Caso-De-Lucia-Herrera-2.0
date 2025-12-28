@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Base de Datos Policial - Fichas</title>
+
+<style>
+    body {
+        margin: 0;
+        background-color: #0a0d11;
+        color: #e6e6e6;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    /* CABECERA */
+    header {
+        background-color: #11161c;
+        padding: 18px 40px;
+        border-bottom: 1px solid #2a2f36;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 18px;
+        color: #cfd8dc;
+        letter-spacing: 0.5px;
+    }
+
+    header span {
+        display: block;
+        font-size: 12px;
+        color: #8b949e;
+        margin-top: 4px;
+    }
+
+    /* CONTENEDOR */
+    .contenedor {
+        padding: 30px 40px;
+    }
+
+    /* BLOQUE DOCUMENTO */
+    .documento {
+        background-color: #0f141a;
+        border: 1px solid #2a2f36;
+        margin-bottom: 25px;
+        padding: 20px 25px;
+    }
+
+    .documento h2 {
+        margin: 0 0 12px 0;
+        font-size: 16px;
+        color: #e6e6e6;
+        font-weight: 600;
+    }
+
+    .linea {
+        margin: 4px 0;
+        color: #c9d1d9;
+    }
+
+    .linea strong {
+        color: #9da7b3;
+        font-weight: 500;
+    }
+
+    .descripcion {
+        margin-top: 10px;
+        line-height: 1.6;
+        color: #bfc6ce;
+    }
+
+    /* BOTÓN */
+    .acciones {
+        margin-top: 15px;
+    }
+
+    .acciones button {
+        background-color: transparent;
+        border: 1px solid #3a3f45;
+        color: #cfd8dc;
+        padding: 6px 14px;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .acciones button:hover {
+        background-color: #161b22;
+    }
+
+    /* BOTÓN VOLVER */
+    .volver {
+        margin-top: 40px;
+        text-align: left;
+    }
+
+    .volver button {
+        background-color: #11161c;
+        border: 1px solid #3a3f45;
+        color: #cfd8dc;
+        padding: 8px 18px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .volver button:hover {
+        background-color: #161b22;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>BASE DE DATOS POLICIAL — CASO N° 047-H</h1>
+    <span>Unidad de Investigaciones Especiales · Acceso restringido</span>
+</header>
+
+<div class="contenedor">
+
+    <!-- LUCÍA -->
+    <div class="documento">
+        <h2>Lucía Herrera</h2>
+        <div class="linea"><strong>Edad:</strong> 21 años</div>
+        <div class="linea"><strong>Ocupación:</strong> Estudiante universitaria</div>
+        <div class="linea"><strong>Residencia:</strong> Buenos Aires</div>
+        <div class="linea"><strong>Estado:</strong> Persona desaparecida</div>
+        <p class="descripcion">
+            Estudiante sin antecedentes penales ni denuncias previas. Descripta por su entorno como reservada,
+            organizada y responsable. La desaparición fue reportada tras perderse contacto la noche del 12 de mayo.
+        </p>
+        <div class="acciones">
+            <button onclick="location.href='lucia_ficha.html'">Abrir expediente completo</button>
+        </div>
+    </div>
+
+    <!-- DANIEL -->
+    <div class="documento">
+        <h2>Daniel Ríos</h2>
+        <div class="linea"><strong>Edad:</strong> 35 años</div>
+        <div class="linea"><strong>Ocupación:</strong> Profesor universitario</div>
+        <div class="linea"><strong>Relación con la víctima:</strong> Docente</div>
+        <div class="linea"><strong>Residencia:</strong> Buenos Aires</div>
+        <p class="descripcion">
+            Profesor de la universidad donde estudiaba la víctima. No registra antecedentes.
+            Fue una de las últimas personas en tener contacto académico con Lucía.
+        </p>
+        <div class="acciones">
+            <button onclick="location.href='daniel_ficha.html'">Abrir expediente completo</button>
+        </div>
+    </div>
+
+    <!-- ÁLVARO -->
+    <div class="documento">
+        <h2>Álvaro Montes</h2>
+        <div class="linea"><strong>Edad:</strong> 23 años</div>
+        <div class="linea"><strong>Ocupación:</strong> Estudiante / Freelance</div>
+        <div class="linea"><strong>Relación con la víctima:</strong> Expareja</div>
+        <div class="linea"><strong>Residencia:</strong> Buenos Aires</div>
+        <p class="descripcion">
+            Mantuvo una relación sentimental con la víctima finalizada meses antes del hecho.
+            Personas cercanas refieren una relación conflictiva.
+        </p>
+        <div class="acciones">
+            <button onclick="location.href='alvaro_ficha.html'">Abrir expediente completo</button>
+        </div>
+    </div>
+
+    <!-- MARIANA -->
+    <div class="documento">
+        <h2>Mariana Cruz</h2>
+        <div class="linea"><strong>Edad:</strong> 22 años</div>
+        <div class="linea"><strong>Ocupación:</strong> Estudiante universitaria</div>
+        <div class="linea"><strong>Relación con la víctima:</strong> Amiga cercana</div>
+        <div class="linea"><strong>Residencia:</strong> Buenos Aires</div>
+        <p class="descripcion">
+            Amiga y confidente de la víctima. Fue una de las primeras personas en declarar tras la desaparición.
+        </p>
+        <div class="acciones">
+            <button onclick="location.href='mariana_ficha.html'">Abrir expediente completo</button>
+        </div>
+    </div>
+
+    <!-- TOMÁS -->
+    <div class="documento">
+        <h2>Tomás Herrera</h2>
+        <div class="linea"><strong>Edad:</strong> 26 años</div>
+        <div class="linea"><strong>Ocupación:</strong> Empleado administrativo</div>
+        <div class="linea"><strong>Relación con la víctima:</strong> Hermano</div>
+        <div class="linea"><strong>Residencia:</strong> Buenos Aires</div>
+        <p class="descripcion">
+            Hermano mayor de la víctima. Colaboró con la investigación aportando dispositivos
+            y pertenencias personales de Lucía.
+        </p>
+        <div class="acciones">
+            <button onclick="location.href='tomas_ficha.html'">Abrir expediente completo</button>
+        </div>
+    </div>
+
+    <div class="volver">
+        <button onclick="location.href='computadora.html'">← Volver al sistema principal</button>
+    </div>
+
+</div>
+
+</body>
+</html>
