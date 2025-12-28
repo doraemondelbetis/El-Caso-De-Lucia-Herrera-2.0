@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuaderno de Historia - Mariana Cruz | Caso 047-H</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background-color: #0b0f14;
+  color: #d0d3d8;
+}
+header {
+  background-color: #111821;
+  padding: 25px;
+  border-bottom: 2px solid #2a3442;
+}
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #8b949e;
+}
+.notes {
+  padding: 30px;
+  background-color: #0f1620;
+  border-bottom: 1px solid #2a3442;
+  font-size: 14px;
+  line-height: 1.6;
+  max-height: 700px;
+  overflow-y: auto;
+}
+.note {
+  margin-bottom: 25px;
+}
+.note-title {
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 10px;
+}
+code {
+  background-color: #1b2533;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Historia - Cifrado César</h1>
+  <p>Mariana Cruz — Caso N° 047-H</p>
+</header>
+
+<div class="notes">
+
+  <div class="note">
+    <div class="note-title">📓 Introducción al cifrado César</div>
+    <p>
+      El cifrado César es un sistema de codificación que consiste en desplazar cada letra del alfabeto un número fijo de posiciones.  
+      Es uno de los métodos más antiguos de criptografía, usado principalmente en Roma.  
+      Se puede aplicar a todo tipo de mensajes alfabéticos y es muy útil para practicar técnicas de encriptación básicas.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Principio de funcionamiento</div>
+    <p>
+      Para cifrar un mensaje se elige un número "n" que indica el desplazamiento.  
+      Cada letra del mensaje original se reemplaza por la letra que está "n" posiciones después en el alfabeto.  
+      El descifrado requiere restar el mismo número de posiciones.  
+      Ejemplo simple:
+    </p>
+    <p>
+      Mensaje original: <code>HOLA</code><br>
+      Desplazamiento: 3<br>
+      Mensaje cifrado: <code>KROD</code><br>
+      Descifrado: aplicar -3 para volver a <code>HOLA</code>
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Tabla de desplazamientos</div>
+    <p>
+      Para facilitar el cifrado, se puede usar una tabla con todas las letras y sus equivalentes según el desplazamiento:
+    </p>
+    <p>
+      A → D, B → E, C → F, ... X → A, Y → B, Z → C (desplazamiento 3)<br>
+      Esto permite cifrar palabras o frases completas de manera rápida y segura.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Ejemplo de mensaje extenso</div>
+    <p>
+      Mensaje original: <code>ESTA ES UNA PRUEBA DE CIFRADO</code><br>
+      Desplazamiento: 4<br>
+      Mensaje cifrado: <code>IWXE IW YRE TVYIFE HI GMJVHE</code><br>
+      Observación: cada letra ha sido desplazada 4 posiciones. Los espacios no se alteran.  
+      Este tipo de cifrado se puede usar para notas rápidas en la universidad o para practicar descifrado.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Ejercicios prácticos</div>
+    <p>
+      1. Cifra el mensaje: <code>HISTORIA MODERNA</code> con desplazamiento 5.<br>
+      2. Descifra: <code>MKXZWJF YTNSLWF</code> usando desplazamiento 5.<br>
+      3. Intenta cifrar frases completas sin alterar los espacios ni signos de puntuación.<br>
+      4. Observa que el cifrado es repetitivo; al llegar a Z, se vuelve a A.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Observaciones importantes</div>
+    <p>
+      Este cuaderno solo contiene ejemplos y ejercicios de práctica.  
+      Los mensajes cifrados pueden incluir palabras o números que sirven como pistas sutiles en casos históricos o juegos de investigación.  
+      Cada desplazamiento cambia el mensaje completamente, por lo que es fundamental recordar la clave utilizada.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">📓 Mini desafío</div>
+    <p>
+      Mensaje cifrado para el jugador: <code>MFXXJ YT YMJ QNRJ</code>  
+      Desplazamiento: 5  
+      Este mensaje puede descifrarse usando el mismo método que los ejemplos anteriores.  
+      Contiene información que podría ser útil más adelante, de forma sutil.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
