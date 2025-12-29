@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pasillos Universitarios | Caso 047-H</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            background-color: #0b0f14;
+            color: #d0d3d8;
+        }
+
+        header {
+            background-color: #111821;
+            padding: 25px;
+            border-bottom: 2px solid #2a3442;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .intro {
+            padding: 30px;
+            background-color: #0f1620;
+            border-bottom: 1px solid #2a3442;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .area {
+            background-color: #121a24;
+            border: 1px solid #2a3442;
+            padding: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .area:hover {
+            background-color: #1b2533;
+        }
+
+        .area h2 {
+            font-size: 16px;
+            margin-top: 0;
+            border-bottom: 1px solid #2a3442;
+            padding-bottom: 10px;
+        }
+
+        .area p {
+            font-size: 13px;
+            color: #b1bac4;
+            line-height: 1.5;
+        }
+
+        .evidencia {
+            margin-top: 12px;
+            padding: 10px;
+            border: 1px dashed #3b4758;
+            font-size: 12px;
+            color: #9da7b3;
+            background-color: #0e141d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #2a3442;
+        }
+
+        footer a {
+            color: #8b949e;
+            text-decoration: none;
+            border: 1px solid #3b4758;
+            padding: 10px 20px;
+        }
+
+        footer a:hover {
+            background-color: #1f2a38;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PASILLOS UNIVERSITARIOS</h1>
+    <p>Zona pública — Universidad — Caso N° 047-H</p>
+</header>
+
+<div class="intro">
+    Los pasillos conectan aulas, oficinas administrativas y accesos secundarios.
+    <br><br>
+    La noche de la desaparición de Lucía Herrera, el edificio no se encontraba
+    completamente vacío, aunque el tránsito fue irregular.
+    <br><br>
+    La inspección se limita a observación, registro de indicios y uso básico
+    del detector portátil.
+</div>
+
+<div class="areas">
+
+    <!-- AULAS -->
+    <div class="area">
+        <h2>🚪 Aulas</h2>
+        <p>
+            Varias aulas presentaban luces encendidas fuera del horario habitual.
+            <br><br>
+            Algunos pizarrones contenían anotaciones recientes,
+            sin firmas ni fechas claras.
+        </p>
+        <div class="evidencia">
+            No se detectan huellas claras en superficies principales.
+            <br><br>
+            El acceso a estas aulas estaba autorizado para múltiples personas,
+            lo que dificulta descartar responsables.
+        </div>
+    </div>
+
+    <!-- MACETAS -->
+    <div class="area">
+        <h2>🪴 Macetas del pasillo exterior</h2>
+        <p>
+            Sector con iluminación deficiente y tránsito reducido.
+            <br><br>
+            El suelo presenta signos de tierra removida recientemente.
+        </p>
+        <div class="evidencia">
+            Objeto hallado: guante de látex con restos de tierra.
+            <br><br>
+            El detector registra una huella en el interior del material.
+            <br>
+            Código de huella: <strong>HX-541-UNI</strong>
+            <br><br>
+            La presencia del guante sugiere intención de evitar dejar rastros,
+            aunque no se puede determinar el motivo.
+        </div>
+    </div>
+
+    <!-- PAPELERA -->
+    <div class="area">
+        <h2>🗑️ Papelera del pasillo</h2>
+        <p>
+            Contiene envoltorios, apuntes rotos y restos de uso cotidiano.
+            <br><br>
+            Algunos objetos parecen haber sido desechados con prisa.
+        </p>
+        <div class="evidencia">
+            Envoltorio plástico con marcas de presión visibles.
+            <br><br>
+            Huella registrada por el detector.
+            <br>
+            Código de huella: <strong>HX-542-UNI</strong>
+            <br><br>
+            El hallazgo confirma presencia relevante en el pasillo,
+            sin poder establecer contexto exacto.
+        </div>
+    </div>
+
+    <!-- CAMARA -->
+    <div class="area">
+        <h2>📹 Cámara de seguridad</h2>
+        <p>
+            Cámara ubicada al final del pasillo,
+            cubriendo accesos secundarios y aulas.
+            <br><br>
+            El sistema registra una interrupción de señal
+            durante la franja horaria crítica.
+        </p>
+        <div class="evidencia">
+            Dispositivo identificado.
+            <br><br>
+            Código del dispositivo: <strong>CAM-UNI-03</strong>
+            <br><br>
+            En el panel de acceso se detecta una huella dactilar.
+            <br>
+            Huella registrada por el detector.
+            <br>
+            Código de huella: <strong>HX-CAM-03</strong>
+            <br><br>
+            No es posible determinar en esta zona
+            si la interrupción fue técnica o intencional.
+            <br>
+            Se recomienda análisis forense.
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <a href="investigar-abierto.html">⬅ Volver a Investigación Abierta</a>
+</footer>
+
+</body>
+</html>
