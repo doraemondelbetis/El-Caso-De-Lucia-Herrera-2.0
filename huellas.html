@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Detector de Huellas | Caso 047-H</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        background-color: #0b0f14;
+        color: #d0d3d8;
+    }
+
+    header {
+        background-color: #111821;
+        padding: 25px;
+        border-bottom: 2px solid #2a3442;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    header p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #8b949e;
+    }
+
+    .contenedor {
+        padding: 50px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .bloque {
+        background-color: #121a24;
+        border: 1px solid #2a3442;
+        padding: 30px;
+    }
+
+    .bloque h2 {
+        margin-top: 0;
+        font-size: 16px;
+        border-bottom: 1px solid #2a3442;
+        padding-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background-color: #0e141d;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #1f2a38;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        cursor: pointer;
+        font-family: "Courier New", monospace;
+    }
+
+    button:hover {
+        background-color: #263445;
+    }
+
+    .mensaje {
+        margin-top: 20px;
+        font-size: 13px;
+        color: #9da7b3;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        border-top: 1px solid #2a3442;
+        margin-top: 50px;
+    }
+
+    footer a {
+        color: #8b949e;
+        text-decoration: none;
+        border: 1px solid #3b4758;
+        padding: 10px 20px;
+    }
+
+    footer a:hover {
+        background-color: #1f2a38;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>DETECTOR DE HUELLAS DACTILARES</h1>
+    <p>Sistema forense — Caso N° 047-H</p>
+</header>
+
+<div class="contenedor">
+    <div class="bloque">
+        <h2>Ingreso manual de código</h2>
+        <p>
+            Introduzca el código de huella para verificar su registro
+            en los archivos del caso.
+        </p>
+
+        <input type="text" id="codigoHuella" placeholder="Ej: XX-000-ZZZ">
+        <button onclick="verificarHuella()">Analizar huella</button>
+
+        <div class="mensaje" id="mensaje"></div>
+    </div>
+</div>
+
+<footer>
+    <a href="investigar.html">⬅ Volver a Investigación</a>
+</footer>
+
+<script>
+    // REGISTRO OFICIAL DE HUELLAS
+    const huellasRegistradas = [
+        // Huellas principales
+        "HX-518-UNI",
+        "HX-521-UNI",
+        "HX-527-UNI",
+        "HX-533-UNI",
+        "HX-541-UNI",
+        "HX-542-UNI",
+        "HX-CAM-03",
+
+        // Easter eggs
+        "HX-MALENA-01",
+        "HX-VICTORIA-01",
+        "HX-DOSIS-01",
+        "HX-ZOPITA-01",
+        "HX-WIKI-01",
+
+        // Huellas futuras
+        "HX-A9F-UNI",
+        "HX-77Q-LAB",
+        "HX-K3M-12",
+        "HX-09X-PAS",
+        "HX-R4T-CER",
+        "HX-MP7-041",
+        "HX-QA2-VID",
+        "HX-18Z-ARC",
+        "HX-V0L-998",
+        "HX-X7E-MZ",
+        "HX-PL4-EX",
+        "HX-5RZ-UNI",
+        "HX-N9A-CAM",
+        "HX-73F-PAP",
+        "HX-J2K-RAW",
+        "HX-C8D-ZN",
+        "HX-44M-SEC",
+        "HX-BT9-EXT",
+        "HX-L0P-119",
+        "HX-ZE7-UNK"
+    ];
+
+    function verificarHuella() {
+        const input = document.getElementById("codigoHuella").value.trim().toUpperCase();
+        const mensaje = document.getElementById("mensaje");
+
+        if (huellasRegistradas.includes(input)) {
+            window.location.href = input + ".html";
+        } else {
+            mensaje.textContent = "La huella no está registrada en los archivos del caso.";
+        }
+    }
+</script>
+
+</body>
+</html>
