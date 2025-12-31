@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Chats - Lucía</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #0f1f1a;
+        color: #e5e7eb;
+    }
+
+    header {
+        background-color: #075e54;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .subheader {
+        background-color: #0b3d34;
+        padding: 10px 20px;
+        font-size: 13px;
+        color: #b9d7d1;
+    }
+
+    .chat-list {
+        padding: 10px 0;
+    }
+
+    .chat {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 20px;
+        border-bottom: 1px solid #1f3f38;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .chat:hover {
+        background-color: #123d33;
+    }
+
+    .chat-top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .chat-number {
+        font-size: 12px;
+        color: #9fd3c7;
+        margin-top: 3px;
+    }
+
+    .chat-preview {
+        font-size: 13px;
+        color: #cfded9;
+        margin-top: 6px;
+    }
+
+    footer {
+        padding: 20px;
+        text-align: center;
+        background-color: #0b3d34;
+    }
+
+    footer button {
+        background-color: #075e54;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    footer button:hover {
+        background-color: #0a6b5c;
+    }
+</style>
+</head>
+<body>
+
+<header>WhatsApp</header>
+
+<div class="subheader">
+    Cuenta vinculada al equipo de Lucía Herrera
+</div>
+
+<div class="chat-list">
+
+    <div class="chat" onclick="location.href='chat-alvaro.html'">
+        <div class="chat-top">
+            <span>Álvaro</span>
+            <span>18/09</span>
+        </div>
+        <div class="chat-number">+54 9 11 7771 4023</div>
+        <div class="chat-preview">
+            “Decime que llegaste bien… no me dejes así.”
+        </div>
+    </div>
+
+    <div class="chat" onclick="location.href='chat-daniel.html'">
+        <div class="chat-top">
+            <span>Daniel</span>
+            <span>19/09</span>
+        </div>
+        <div class="chat-number">+54 9 11 7772 9184</div>
+        <div class="chat-preview">
+            “No hables de eso por acá. Después te explico.”
+        </div>
+    </div>
+
+    <div class="chat" onclick="location.href='chat-tomas.html'">
+        <div class="chat-top">
+            <span>Tomás</span>
+            <span>20/09</span>
+        </div>
+        <div class="chat-number">+54 9 11 7773 6601</div>
+        <div class="chat-preview">
+            “Borrá los mensajes, en serio.”
+        </div>
+    </div>
+
+    <div class="chat" onclick="location.href='chat-mariana.html'">
+        <div class="chat-top">
+            <span>Mariana</span>
+            <span>20/09</span>
+        </div>
+        <div class="chat-number">+54 9 11 7774 0911</div>
+        <div class="chat-preview">
+            “Estoy con vos, pase lo que pase.”
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <button onclick="location.href='lucia.html'">
+        Volver a la computadora
+    </button>
+</footer>
+
+</body>
+</html>
