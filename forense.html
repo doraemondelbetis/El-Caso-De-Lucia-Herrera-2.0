@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Forense General | Caso 047-H</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        background-color: #0b0f14;
+        color: #d0d3d8;
+    }
+
+    header {
+        background-color: #111821;
+        padding: 25px;
+        border-bottom: 2px solid #2a3442;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    header p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #8b949e;
+    }
+
+    .contenedor {
+        padding: 50px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .bloque {
+        background-color: #121a24;
+        border: 1px solid #2a3442;
+        padding: 30px;
+    }
+
+    .bloque h2 {
+        margin-top: 0;
+        font-size: 16px;
+        border-bottom: 1px solid #2a3442;
+        padding-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background-color: #0e141d;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #1f2a38;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        cursor: pointer;
+        font-family: "Courier New", monospace;
+    }
+
+    button:hover {
+        background-color: #263445;
+    }
+
+    .mensaje {
+        margin-top: 20px;
+        font-size: 13px;
+        color: #9da7b3;
+        white-space: pre-line;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        border-top: 1px solid #2a3442;
+        margin-top: 50px;
+    }
+
+    footer a {
+        color: #8b949e;
+        text-decoration: none;
+        border: 1px solid #3b4758;
+        padding: 10px 20px;
+    }
+
+    footer a:hover {
+        background-color: #1f2a38;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>FORENSE GENERAL</h1>
+    <p>Sistema de análisis avanzado — Caso N° 047-H</p>
+</header>
+
+<div class="contenedor">
+    <div class="bloque">
+        <h2>Ingreso de código forense</h2>
+        <p>
+            Introduzca un código autorizado para ejecutar
+            un análisis forense del caso.
+        </p>
+
+        <input type="text" id="codigoForense" placeholder="Ej: FOR-XX-000">
+        <button onclick="verificarCodigo()">Ejecutar análisis</button>
+
+        <div class="mensaje" id="mensaje"></div>
+    </div>
+</div>
+
+<footer>
+    <a href="investigar.html">⬅ Volver a Investigación</a>
+</footer>
+
+<script>
+    // CÓDIGOS FORENSES AUTORIZADOS (NO SECUENCIALES)
+    const codigosForenses = [
+        "FOR-A9X-17",
+        "FOR-19Q-M4",
+        "FOR-X7-DEL",
+        "FOR-88K-Z1",
+        "FOR-QA-204",
+        "FOR-7M9-R",
+        "FOR-LX-33",
+        "FOR-91-TA",
+        "FOR-Z4-812",
+        "FOR-RN-60",
+        "FOR-5K-AL",
+        "FOR-M2-777",
+        "FOR-09-FX",
+        "FOR-NN-48",
+        "FOR-T3-900",
+        "FOR-KA-6P",
+        "FOR-4J-X",
+        "FOR-HM-302",
+        "FOR-0Z-19",
+
+        // CÓDIGO ESPECIAL (NO REPETIBLE)
+        "FR-303-UNI"
+    ];
+
+    function verificarCodigo() {
+        const input = document.getElementById("codigoForense").value.trim().toUpperCase();
+        const mensaje = document.getElementById("mensaje");
+
+        if (codigosForenses.includes(input)) {
+
+            if (input === "FR-303-UNI") {
+                mensaje.textContent =
+`CÓDIGO VALIDADO
+
+ANÁLISIS FORENSE PROFUNDO DISPONIBLE
+REQUERIMIENTO DE MÓDULO ESPECÍFICO
+
+ARCHIVO BLOQUEADO`;
+            } else {
+                mensaje.textContent =
+`CÓDIGO VÁLIDO
+
+ANÁLISIS EJECUTADO
+RESULTADOS PARCIALES`;
+            }
+
+        } else {
+            mensaje.textContent =
+"Código no válido. El identificador no existe en los registros forenses.";
+        }
+    }
+</script>
+
+</body>
+</html>
