@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Computadora de Lucía</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #0b0f14;
+    color: #e5e5e5;
+    height: 100vh;
+}
+
+/* ===== BLOQUEO ===== */
+#lockscreen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lockbox {
+    background-color: #111827;
+    border: 1px solid #334155;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+.lockbox h2 {
+    margin-top: 0;
+    color: #93c5fd;
+}
+#display {
+    background: #020617;
+    border: 1px solid #475569;
+    color: #22c55e;
+    font-size: 24px;
+    padding: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 6px;
+    min-height: 32px;
+}
+.pinpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.pinpad button {
+    padding: 15px;
+    font-size: 18px;
+    background: #1f2937;
+    color: #e5e5e5;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.pinpad button:hover {
+    background: #334155;
+}
+.aceptar {
+    grid-column: span 3;
+    background: #1e3a8a;
+}
+.aceptar:hover {
+    background: #2563eb;
+}
+.borrar {
+    background: #7f1d1d;
+}
+.borrar:hover {
+    background: #991b1b;
+}
+#error {
+    margin-top: 10px;
+    color: #f87171;
+    font-size: 14px;
+}
+
+/* ===== SISTEMA ===== */
+.barra-superior {
+    height: 50px;
+    background-color: #1f2937;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+.barra-superior h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #93c5fd;
+}
+
+#desktop {
+    display: none;
+    padding: 30px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.icono {
+    width: 130px;
+    height: 130px;
+    background-color: rgba(20,25,35,0.85);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+.icono:hover {
+    background-color: rgba(40,60,90,0.9);
+}
+.icono span {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* BOTÓN VOLVER */
+.volver {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.volver button {
+    padding: 12px 25px;
+    font-size: 15px;
+    background-color: #1e3a8a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.volver button:hover {
+    background-color: #2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== BLOQUEO ===== -->
+<div id="lockscreen">
+    <div class="lockbox">
+        <h2>Usuario: Lucía</h2>
+        <div id="display"></div>
+
+        <div class="pinpad">
+            <button onclick="add('1')">1</button>
+            <button onclick="add('2')">2</button>
+            <button onclick="add('3')">3</button>
+            <button onclick="add('4')">4</button>
+            <button onclick="add('5')">5</button>
+            <button onclick="add('6')">6</button>
+            <button onclick="add('7')">7</button>
+            <button onclick="add('8')">8</button>
+            <button onclick="add('9')">9</button>
+
+            <button class="borrar" onclick="clearPin()">←</button>
+            <button onclick="add('0')">0</button>
+            <button disabled></button>
+
+            <button class="aceptar" onclick="checkPin()">ACEPTAR</button>
+        </div>
+
+        <div id="error"></div>
+    </div>
+</div>
+
+<!-- ===== ESCRITORIO ===== -->
+<div id="system">
+    <div class="barra-superior">
+        <h2>Computadora personal - Lucía Herrera</h2>
+    </div>
+
+    <div id="desktop">
+        <div class="icono" onclick="location.href='lucia-diario.html'">
+            <span>📓</span>
+            <p>Diario</p>
+        </div>
+
+        <div class="icono" onclick="location.href='lucia-chats.html'">
+            <span>💬</span>
+            <p>Chats</p>
+        </div>
+
+        <div class="icono" onclick="location.href='lucia-historial.html'">
+            <span>🌐</span>
+            <p>Historial</p>
+        </div>
+    </div>
+
+    <div class="volver">
+        <button onclick="location.href='computadora.html'">⬅ Volver a la computadora</button>
+    </div>
+</div>
+
+<script>
+let pin = "";
+
+function add(num) {
+    if (pin.length >= 4) return;
+    pin += num;
+    updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementById("display").innerText = pin;
+}
+
+function clearPin() {
+    pin = "";
+    updateDisplay();
+    document.getElementById("error").innerText = "";
+}
+
+function checkPin() {
+    if (pin === "1409") {
+        document.getElementById("lockscreen").style.display = "none";
+        document.getElementById("desktop").style.display = "flex";
+    } else {
+        document.getElementById("error").innerText = "Contraseña incorrecta";
+        clearPin();
+    }
+}
+
+/* ===== TECLADO ===== */
+document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lockscreen").style.display === "none") return;
+
+    if (e.key >= "0" && e.key <= "9") {
+        add(e.key);
+    }
+    if (e.key === "Enter") {
+        checkPin();
+    }
+    if (e.key === "Backspace") {
+        pin = pin.slice(0, -1);
+        updateDisplay();
+    }
+});
+</script>
+
+</body>
+</html>
