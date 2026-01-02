@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registros de Cámaras | Caso 047-H</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        background-color: #0b0f14;
+        color: #d0d3d8;
+    }
+
+    header {
+        background-color: #111821;
+        padding: 25px;
+        border-bottom: 2px solid #2a3442;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    header p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #8b949e;
+    }
+
+    .contenedor {
+        padding: 50px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .bloque {
+        background-color: #121a24;
+        border: 1px solid #2a3442;
+        padding: 30px;
+    }
+
+    .bloque h2 {
+        margin-top: 0;
+        font-size: 16px;
+        border-bottom: 1px solid #2a3442;
+        padding-bottom: 10px;
+    }
+
+    .bloque p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #b1bac4;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background-color: #0e141d;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #1f2a38;
+        border: 1px solid #3b4758;
+        color: #d0d3d8;
+        cursor: pointer;
+        font-family: "Courier New", monospace;
+    }
+
+    button:hover {
+        background-color: #263445;
+    }
+
+    .mensaje {
+        margin-top: 20px;
+        font-size: 13px;
+        color: #9da7b3;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        border-top: 1px solid #2a3442;
+        margin-top: 50px;
+    }
+
+    footer a {
+        color: #8b949e;
+        text-decoration: none;
+        border: 1px solid #3b4758;
+        padding: 10px 20px;
+    }
+
+    footer a:hover {
+        background-color: #1f2a38;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>REGISTROS DE CÁMARAS Y AUDIO</h1>
+    <p>Sistema de monitoreo — Caso N° 047-H</p>
+</header>
+
+<div class="contenedor">
+    <div class="bloque">
+        <h2>Ingreso de código de acceso</h2>
+        <p>
+            Introduzca un código válido para acceder a registros
+            específicos de cámaras o archivos de audio asociados.
+            <br><br>
+            Algunos accesos pueden desbloquear nuevas líneas
+            de investigación o zonas privadas.
+        </p>
+
+        <input type="text" id="codigoCamara" placeholder="Ej: ZIP-XXX-00">
+        <button onclick="verificarCodigo()">Acceder</button>
+
+        <div class="mensaje" id="mensaje"></div>
+    </div>
+</div>
+
+<footer>
+    <a href="investigar.html">⬅ Volver a Investigación</a>
+</footer>
+
+<script>
+    // REGISTRO DE CÓDIGOS DE CÁMARAS / AUDIO
+    const codigosCamaras = [
+        "ZIP-AUD-01",
+
+        "CAM-UNI-03",
+        "AUD-PAS-17",
+        "ZIP-EXT-44",
+        "CAM-BAR-09",
+        "AUD-INT-52",
+        "ZIP-COR-31",
+        "CAM-EX-88",
+        "AUD-UNI-14",
+        "ZIP-ZN-07",
+        "CAM-NOC-66",
+        "AUD-REG-21",
+        "ZIP-PNL-90",
+        "CAM-ARC-11",
+        "AUD-CAM-39",
+        "ZIP-OBS-04",
+        "CAM-ZON-73",
+        "AUD-SEC-58",
+        "ZIP-VID-99"
+    ];
+
+    function verificarCodigo() {
+        const input = document.getElementById("codigoCamara").value.trim().toUpperCase();
+        const mensaje = document.getElementById("mensaje");
+
+        if (codigosCamaras.includes(input)) {
+            window.location.href = input + ".html";
+        } else {
+            mensaje.textContent = "Código no válido o no registrado en el sistema.";
+        }
+    }
+</script>
+
+</body>
+</html>
