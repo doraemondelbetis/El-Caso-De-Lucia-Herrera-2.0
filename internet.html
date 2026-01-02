@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Buscar</title>
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff;
+    margin:0;
+}
+.container{
+    max-width:650px;
+    margin:120px auto;
+    text-align:center;
+}
+.logo{
+    font-size:64px;
+    font-weight:bold;
+}
+.logo span:nth-child(1){color:#4285f4;}
+.logo span:nth-child(2){color:#ea4335;}
+.logo span:nth-child(3){color:#fbbc05;}
+.logo span:nth-child(4){color:#4285f4;}
+.logo span:nth-child(5){color:#34a853;}
+.logo span:nth-child(6){color:#ea4335;}
+
+input{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+    border-radius:24px;
+    border:1px solid #dfe1e5;
+    margin-top:30px;
+}
+.results{
+    text-align:left;
+    margin-top:30px;
+}
+.result{
+    margin-bottom:25px;
+}
+.result a{
+    color:#1a0dab;
+    font-size:18px;
+    text-decoration:none;
+}
+.result a:hover{ text-decoration:underline; }
+.url{
+    color:#006621;
+    font-size:14px;
+}
+.desc{
+    font-size:14px;
+    color:#4d5156;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">
+        <span>B</span><span>u</span><span>s</span><span>c</span><span>a</span><span>r</span>
+    </div>
+    <input id="search" placeholder="Buscar en Internet">
+    <div class="results" id="results"></div>
+</div>
+
+<script>
+function normalize(txt){
+    return txt.toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g,"");
+}
+
+const resultsDiv = document.getElementById("results");
+document.getElementById("search").addEventListener("keydown",e=>{
+    if(e.key==="Enter") buscar();
+});
+
+function buscar(){
+    const q = normalize(document.getElementById("search").value);
+    resultsDiv.innerHTML="";
+
+    let found = false;
+
+    /* ================= LUCÍA / LA CAJA ================= */
+    if(q.includes("lucia")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="la-caja.html">La Caja – Espacio estudiantil no oficial</a>
+            <div class="url">intranet.uni/foros</div>
+            <div class="desc">
+            Lugar conocido entre alumnos donde se compartían códigos de acceso
+            para evitar control administrativo. Lucía participaba activamente.
+            </div>
+        </div>`;
+    }
+
+    /* ================= MARIANA ================= */
+    if(q.includes("mariana")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="pasillos-servicio.html">Accesos de servicio – Universidad</a>
+            <div class="url">archivos.uni/pasillos</div>
+            <div class="desc">
+            Documentación informal compartida entre alumnos avanzados.
+            Incluye accesos restringidos utilizados fuera de horario.
+            </div>
+        </div>`;
+    }
+
+    /* ================= ALVARO ================= */
+    if(q.includes("alvaro")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="manual-camaras.html">Manual técnico de cámaras UNI</a>
+            <div class="url">docs.uni/seguridad</div>
+            <div class="desc">
+            Guía difundida entre alumnos de informática para comprender
+            puntos ciegos y paneles de control.
+            </div>
+        </div>`;
+    }
+
+    /* ================= DANIEL ================= */
+    if(q.includes("daniel")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="foro-testigos.html">Foro archivado: Testigos del 16/09</a>
+            <div class="url">foros.uni/archivo</div>
+            <div class="desc">
+            Hilo anónimo donde se menciona a Daniel como una de las últimas
+            personas en ver a Lucía esa noche.
+            </div>
+        </div>`;
+    }
+
+    /* ================= TOMAS ================= */
+    if(q.includes("tomas")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="horarios-filtrados.html">Horarios no oficiales – UNI</a>
+            <div class="url">shared.uni/horarios</div>
+            <div class="desc">
+            Documento popular entre alumnos para evitar cámaras y controles.
+            Tomás aparece como uno de los difusores.
+            </div>
+        </div>`;
+    }
+
+    /* ================= EASTER EGGS ================= */
+    if(q.includes("malena") || q.includes("meyyyys")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="easteregg.html">Malena – Artículo enciclopédico</a>
+            <div class="url">wikipedia.org</div>
+            <div class="desc">Perfil cultural no relacionado con la investigación.</div>
+        </div>
+        <div class="result">
+            <a href="https://www.youtube.com/@meyyyys9109" target="_blank">Canal de YouTube</a>
+            <div class="url">youtube.com</div>
+        </div>
+        <div class="result">
+            <a href="https://www.twitch.tv/meyyyys" target="_blank">Canal de Twitch</a>
+            <div class="url">twitch.tv</div>
+        </div>`;
+    }
+
+    if(q.includes("vikita") || q.includes("victoria")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="easteregg.html">Victoria – Artículo enciclopédico</a>
+            <div class="url">wikipedia.org</div>
+        </div>
+        <div class="result">
+            <a href="https://www.twitch.tv/vikita02" target="_blank">Canal de Twitch</a>
+            <div class="url">twitch.tv</div>
+        </div>`;
+    }
+
+    if(q.includes("dosis")){
+        found=true;
+        resultsDiv.innerHTML+=`
+        <div class="result">
+            <a href="easteregg.html">Dosis de mierda – Artículo enciclopédico</a>
+            <div class="url">wikipedia.org</div>
+        </div>
+        <div class="result">
+            <a href="https://kick.com/dosis-de-mierda" target="_blank">Canal de Kick</a>
+            <div class="url">kick.com</div>
+        </div>
+        <div class="result">
+            <a href="https://www.youtube.com/@dosis_de_mierda" target="_blank">Canal de YouTube</a>
+            <div class="url">youtube.com</div>
+        </div>`;
+    }
+
+    /* ================= RESULTADO GENERICO ================= */
+    if(!found){
+        resultsDiv.innerHTML=`
+        <div class="result">
+            <a href="#">Resultados no oficiales</a>
+            <div class="url">archivos.dispersos</div>
+            <div class="desc">
+            No existen registros formales, pero hay menciones informales
+            entre estudiantes.
+            </div>
+        </div>`;
+    }
+}
+</script>
+
+</body>
+</html>
