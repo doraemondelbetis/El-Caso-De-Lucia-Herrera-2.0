@@ -1,154 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Sistema Forense – FOR-4J-X</title>
-<style>
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#0b141a;
-    color:#e9edef;
+// --- FOR-4J-X ---
+// Lógica principal para determinar el destino de Lucía
+
+function normalizar(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")                // separa acentos
+        .replace(/[\u0300-\u036f]/g, "") // elimina acentos
+        .replace(/\s+/g, "");            // elimina espacios
 }
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:25px;
-}
-h1{
-    text-align:center;
-    color:#55efc4;
-    margin-bottom:10px;
-}
-p{
-    line-height:1.6;
-    margin:14px 0;
-}
-input{
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:6px;
-    font-size:15px;
-    margin-top:10px;
-    margin-bottom:10px;
-}
-button{
-    padding:10px 20px;
-    border:none;
-    border-radius:6px;
-    background:#0984e3;
-    color:white;
-    cursor:pointer;
-    margin-top:10px;
-    font-size:14px;
-}
-.result{
-    background:#202c33;
-    padding:15px;
-    border-radius:8px;
-    margin-top:20px;
-}
-.code{
-    background:#111b21;
-    padding:10px;
-    border-radius:6px;
-    font-family:monospace;
-    display:inline-block;
-    color:#ffd700;
-}
-</style>
-</head>
-<body>
-<div class="container">
 
-<h1>Módulo Forense FOR-4J-X</h1>
+function procesarAcusado(nombreIngresado) {
+    const nombre = normalizar(nombreIngresado);
 
-<p>
-Este módulo corresponde al archivo forense encargado de procesar la identidad del presunto culpable
-y generar automáticamente el estado final del caso.  
-Si el nombre ingresado es <strong>“Mariana”</strong>, se activa el protocolo de rescate
-y recuperación.  
-Si se ingresa cualquier otro nombre, se ejecuta el protocolo de hallazgo tardío.
-</p>
+    // Posibles variantes equivalentes
+    const mariana = ["mariana", "marianacruz"];
 
-<p><strong>Código del módulo:</strong> <span class="code">FOR-4J-X</span></p>
-
-<p>Ingrese el nombre del acusado:</p>
-<input type="text" id="culpable" placeholder="Escriba el nombre del acusado...">
-<button onclick="procesar()">Procesar</button>
-
-<div id="resultado"></div>
-
-</div>
-
-<script>
-function procesar() {
-    const nombre = document.getElementById("culpable").value.trim();
-    const res = document.getElementById("resultado");
-
-    if(!nombre) {
-        res.innerHTML = "<div class='result'>Debe ingresar un nombre.</div>";
-        return;
-    }
-
-    if(nombre.toLowerCase() === "mariana") {
-        res.innerHTML = `
-        <div class="result">
-            <h3>Resultado del Caso</h3>
-            <p><strong>Estado de Lucía:</strong> VIVA</p>
-            <p><strong>Ubicación:</strong> Almacén subterráneo en zona de mantenimiento.</p>
-            <p>
-            Lucía fue encontrada con vida tras seis días de desaparición. Se encontraba en un
-            pequeño cuarto sin ventanas, utilizado antiguamente como depósito de reactivos.
-            Estaba en estado de shock, deshidratada y con signos de haber sido inmovilizada,
-            pero sin heridas graves. Declaró haber escuchado voces y pasos esporádicos, así como
-            el sonido constante de tuberías y maquinaria, lo que permitió a los investigadores
-            identificar la zona exacta del campus donde podría encontrarse.
-            </p>
-            <p>
-            Tras el rescate, la investigación condujo al arresto inmediato de <strong>Mariana Cruz</strong>,
-            cuyo acceso a las zonas de mantenimiento, junto con inconsistencias en su declaración
-            y huellas encontradas en el depósito, fueron determinantes. Su comportamiento evasivo,
-            los registros de acceso no autorizados y testimonios de alumnos que la vieron cerca
-            de la entrada a los pasillos restringidos la vincularon directamente con el secuestro.
-            </p>
-            <p>
-            El caso concluye con Lucía recibiendo atención médica y psicológica, mientras Mariana
-            es puesta bajo custodia para ser procesada. El campus fue cerrado temporalmente y
-            las zonas subterráneas selladas. La familia Herrera agradeció públicamente la
-            intervención rápida del equipo forense y los estudiantes que aportaron información clave.
-            </p>
-        </div>`;
+    if (mariana.includes(nombre)) {
+        return resultadoMariana();
     } else {
-        res.innerHTML = `
-        <div class="result">
-            <h3>Resultado del Caso</h3>
-            <p><strong>Estado de Lucía:</strong> MUERTA</p>
-            <p><strong>Ubicación del cuerpo:</strong> Interior del campus universitario, dentro de una bolsa de basura.</p>
-            <p>
-            Tres días después de haber imputado formalmente a <strong>${nombre}</strong>, 
-            personal de limpieza encontró una bolsa negra cercana a los contenedores del sector
-            de mantenimiento. En su interior se encontraba el cuerpo de Lucía Herrera, con signos
-            de maltrato y evidente descuido post-mortem. No se hallaron cámaras apuntando al lugar,
-            y las zonas de acceso habían sido manipuladas previamente.
-            </p>
-            <p>
-            La policía determinó que el hallazgo ocurrió de forma tardía, y que el verdadero
-            responsable nunca fue identificado. Aunque <strong>${nombre}</strong> fue removido de la causa
-            posteriormente, el daño ya estaba hecho y la universidad intentó silenciar el hecho
-            para evitar la crisis mediática.
-            </p>
-            <p>
-            El caso permaneció técnicamente abierto, pero sin avances reales tras el descubrimiento
-            del cuerpo. Entre alumnos se habló durante años de alguien con acceso a zonas
-            restringidas, horarios específicos y conocimiento profundo del campus, pero oficialmente
-            nunca se pudo establecer un culpable.
-            </p>
-        </div>`;
+        return resultadoOtro(nombreIngresado);
     }
 }
-</script>
 
-</body>
-</html>
+// === Si acusan a Mariana o Mariana Cruz ===
+function resultadoMariana() {
+    return `
+📁 ESTADO DEL CASO: ENCONTRADA CON VIDA
+
+La acusación recae sobre Mariana, lo que moviliza a la fiscalía a reabrir las búsquedas internas.
+Tras 48 horas de cateos y análisis de cámaras, se encuentra a Lucía escondida en un laboratorio
+abandonado dentro del bloque antiguo de la Facultad de Ingeniería.
+
+Lucía estaba deshidratada y asustada, pero sin heridas graves aparentes. Los doctores indican
+que fue sedada en algún momento de las últimas 72 horas. La policía científica encuentra
+huellas de cinta industrial, restos de pegamento y un vaso con sedantes.
+
+La fiscal del caso confirma que Mariana queda como sospechosa prioritaria mientras Lucía
+declara bajo vigilancia médica.
+
+📌 NOTA:
+"El hallazgo fue posible gracias a inconsistencias en la coartada de Mariana", informó la fiscalía.
+
+[FOR-4J-X] – Caso continúa en fase investigativa.
+    `.trim();
+}
+
+// === Si acusan a alguien más ===
+function resultadoOtro(nombreIngresado) {
+    return `
+📁 ESTADO DEL CASO: VÍCTIMA LOCALIZADA SIN VIDA
+
+La acusación fue dirigida contra "${nombreIngresado}". Sin embargo, mientras el juez autoriza
+la orden de detención, personal de intendencia descubre una bolsa negra en un contenedor detrás
+del edificio central de la universidad.
+
+Dentro se encontraba el cuerpo de Lucía, con signos de estrangulamiento y envoltura de basura
+industrial usada por laboratorios. La escena fue acordonada inmediatamente.
+
+Peritos indican que la data de muerte es reciente (entre 8 y 12 horas). No hay signos de
+abuso sexual, pero sí de lucha defensiva: uñas rotas, abrasiones y rastros de piel ajena.
+
+La muerte de Lucía altera por completo el enfoque del caso y ahora la fiscalía considera
+que hubo premeditación y participación experta.
+
+📌 NOTA:
+"Alguien planeó esto dentro de la universidad", declara el vocero policial.
+
+[FOR-4J-X] – Caso reclasificado a homicidio.
+    `.trim();
+}
+
+// Ejemplo de uso:
+// console.log(procesarAcusado("Mariana Cruz"));
+// console.log(procesarAcusado("Pedro"));
+// console.log(procesarAcusado("marÍana"));
+// console.log(procesarAcusado("MARIANA   CRUZ"));
