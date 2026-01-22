@@ -2,113 +2,153 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>FOR-4J-X | Determinación de Culpabilidad</title>
+<title>Sistema Forense – FOR-4J-X</title>
 <style>
-    body {
-        margin: 0;
-        font-family: "Courier New", monospace;
-        background-color: #0b0f14;
-        color: #d0d3d8;
-    }
-
-    header {
-        background-color: #111821;
-        padding: 25px;
-        border-bottom: 2px solid #2a3442;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 22px;
-    }
-
-    header p {
-        margin-top: 8px;
-        font-size: 14px;
-        color: #8b949e;
-    }
-
-    .contenedor {
-        padding: 40px;
-        max-width: 900px;
-        margin: auto;
-    }
-
-    .bloque {
-        background-color: #121a24;
-        padding: 22px;
-        margin-bottom: 30px;
-        border: 1px solid #2a3442;
-        border-radius: 5px;
-    }
-
-    .titulo {
-        font-size: 16px;
-        color: #7ea4ff;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-    }
-
-    .dato {
-        font-size: 14px;
-        line-height: 1.5rem;
-        color: #c3c8cf;
-        white-space: pre-line;
-    }
-
-    .riesgo-alto {
-        color: #ff6b6b;
-        font-weight: bold;
-    }
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0b141a;
+    color:#e9edef;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:25px;
+}
+h1{
+    text-align:center;
+    color:#55efc4;
+    margin-bottom:10px;
+}
+p{
+    line-height:1.6;
+    margin:14px 0;
+}
+input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    font-size:15px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#0984e3;
+    color:white;
+    cursor:pointer;
+    margin-top:10px;
+    font-size:14px;
+}
+.result{
+    background:#202c33;
+    padding:15px;
+    border-radius:8px;
+    margin-top:20px;
+}
+.code{
+    background:#111b21;
+    padding:10px;
+    border-radius:6px;
+    font-family:monospace;
+    display:inline-block;
+    color:#ffd700;
+}
 </style>
 </head>
-
 <body>
-<header>
-    <h1>FOR-4J-X — Módulo Forense</h1>
-    <p>Sistema de Determinación de Culpabilidad | Clasificación Interna</p>
-</header>
+<div class="container">
 
-<div class="contenedor">
+<h1>Módulo Forense FOR-4J-X</h1>
 
-    <div class="bloque">
-        <div class="titulo">Propósito Oficial</div>
-        <div class="dato">
-            Este módulo FOR-4J-X tiene como finalidad analizar elementos del caso activo,
-            correlacionar evidencia digital y testimonios, y generar un índice estimativo
-            de culpabilidad para cada sospechoso registrado.
-        </div>
-    </div>
+<p>
+Este módulo corresponde al archivo forense encargado de procesar la identidad del presunto culpable
+y generar automáticamente el estado final del caso.  
+Si el nombre ingresado es <strong>“Mariana”</strong>, se activa el protocolo de rescate
+y recuperación.  
+Si se ingresa cualquier otro nombre, se ejecuta el protocolo de hallazgo tardío.
+</p>
 
-    <div class="bloque">
-        <div class="titulo">Parámetros de Análisis</div>
-        <div class="dato">
-            • Coherencia de Testimonios
-            • Presencia en Escena
-            • Motivo Directo
-            • Beneficio Potencial
-            • Relaciones Interpersonales
-            • Pruebas Materiales
-            • Evidencia Digital
-        </div>
-    </div>
+<p><strong>Código del módulo:</strong> <span class="code">FOR-4J-X</span></p>
 
-    <div class="bloque">
-        <div class="titulo">Índice Automático</div>
-        <div class="dato">
-            El sistema asigna valores entre 0 y 100 por cada parámetro.
-            Los resultados se integran en un Índice Final de Culpabilidad (IFC).
-            Un IFC superior a 70 se considera <span class="riesgo-alto">ALTA PROBABILIDAD DE CULPABILIDAD</span>.
-        </div>
-    </div>
+<p>Ingrese el nombre del acusado:</p>
+<input type="text" id="culpable" placeholder="Escriba el nombre del acusado...">
+<button onclick="procesar()">Procesar</button>
 
-    <div class="bloque">
-        <div class="titulo">Salida del Módulo</div>
-        <div class="dato">
-            Salida: { Suspect: [Nombre], IFC: [0-100], Estado: [Descartado/Neutral/Probable/Alta] }
-        </div>
-    </div>
+<div id="resultado"></div>
 
 </div>
+
+<script>
+function procesar() {
+    const nombre = document.getElementById("culpable").value.trim();
+    const res = document.getElementById("resultado");
+
+    if(!nombre) {
+        res.innerHTML = "<div class='result'>Debe ingresar un nombre.</div>";
+        return;
+    }
+
+    if(nombre.toLowerCase() === "mariana") {
+        res.innerHTML = `
+        <div class="result">
+            <h3>Resultado del Caso</h3>
+            <p><strong>Estado de Lucía:</strong> VIVA</p>
+            <p><strong>Ubicación:</strong> Almacén subterráneo en zona de mantenimiento.</p>
+            <p>
+            Lucía fue encontrada con vida tras seis días de desaparición. Se encontraba en un
+            pequeño cuarto sin ventanas, utilizado antiguamente como depósito de reactivos.
+            Estaba en estado de shock, deshidratada y con signos de haber sido inmovilizada,
+            pero sin heridas graves. Declaró haber escuchado voces y pasos esporádicos, así como
+            el sonido constante de tuberías y maquinaria, lo que permitió a los investigadores
+            identificar la zona exacta del campus donde podría encontrarse.
+            </p>
+            <p>
+            Tras el rescate, la investigación condujo al arresto inmediato de <strong>Mariana Cruz</strong>,
+            cuyo acceso a las zonas de mantenimiento, junto con inconsistencias en su declaración
+            y huellas encontradas en el depósito, fueron determinantes. Su comportamiento evasivo,
+            los registros de acceso no autorizados y testimonios de alumnos que la vieron cerca
+            de la entrada a los pasillos restringidos la vincularon directamente con el secuestro.
+            </p>
+            <p>
+            El caso concluye con Lucía recibiendo atención médica y psicológica, mientras Mariana
+            es puesta bajo custodia para ser procesada. El campus fue cerrado temporalmente y
+            las zonas subterráneas selladas. La familia Herrera agradeció públicamente la
+            intervención rápida del equipo forense y los estudiantes que aportaron información clave.
+            </p>
+        </div>`;
+    } else {
+        res.innerHTML = `
+        <div class="result">
+            <h3>Resultado del Caso</h3>
+            <p><strong>Estado de Lucía:</strong> MUERTA</p>
+            <p><strong>Ubicación del cuerpo:</strong> Interior del campus universitario, dentro de una bolsa de basura.</p>
+            <p>
+            Tres días después de haber imputado formalmente a <strong>${nombre}</strong>, 
+            personal de limpieza encontró una bolsa negra cercana a los contenedores del sector
+            de mantenimiento. En su interior se encontraba el cuerpo de Lucía Herrera, con signos
+            de maltrato y evidente descuido post-mortem. No se hallaron cámaras apuntando al lugar,
+            y las zonas de acceso habían sido manipuladas previamente.
+            </p>
+            <p>
+            La policía determinó que el hallazgo ocurrió de forma tardía, y que el verdadero
+            responsable nunca fue identificado. Aunque <strong>${nombre}</strong> fue removido de la causa
+            posteriormente, el daño ya estaba hecho y la universidad intentó silenciar el hecho
+            para evitar la crisis mediática.
+            </p>
+            <p>
+            El caso permaneció técnicamente abierto, pero sin avances reales tras el descubrimiento
+            del cuerpo. Entre alumnos se habló durante años de alguien con acceso a zonas
+            restringidas, horarios específicos y conocimiento profundo del campus, pero oficialmente
+            nunca se pudo establecer un culpable.
+            </p>
+        </div>`;
+    }
+}
+</script>
+
 </body>
 </html>
