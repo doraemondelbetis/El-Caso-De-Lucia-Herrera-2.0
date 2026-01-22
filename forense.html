@@ -133,8 +133,6 @@
         "FOR-Z4-812", "FOR-RN-60", "FOR-5K-AL", "FOR-M2-777",
         "FOR-09-FX", "FOR-NN-48", "FOR-T3-900", "FOR-KA-6P",
         "FOR-4J-X", "FOR-HM-302", "FOR-0Z-19",
-
-        // CÓDIGO ESPECIAL (NO REPETIBLE)
         "FR-303-UNI"
     ];
 
@@ -142,36 +140,25 @@
         const input = document.getElementById("codigoForense").value.trim().toUpperCase();
         const mensaje = document.getElementById("mensaje");
 
-        // Limpiar el contenido previo
+        // Limpiar contenido previo
         mensaje.innerHTML = "";
 
-        // Caso especial FR-303-UNI
-        if (input === "FR-303-UNI") {
-            mensaje.innerHTML =
-`CÓDIGO ESPECIAL ACEPTADO
-
-ANÁLISIS TERMINADO`;
-
-            // Crear botón dinámicamente
-            const btn = document.createElement("button");
-            btn.textContent = "Acceder a Informe Final";
-            btn.style.marginTop = "15px";
-            btn.onclick = () => {
-                window.location.href = "FR-303-UNI.html";
-            };
-
-            mensaje.appendChild(document.createElement("br"));
-            mensaje.appendChild(btn);
-            return;
-        }
-
-        // Caso general
         if (codigosForenses.includes(input)) {
             mensaje.textContent =
 `CÓDIGO VÁLIDO
 
-ANÁLISIS EJECUTADO
-RESULTADOS PARCIALES`;
+ANÁLISIS TERMINADO`;
+
+            const btn = document.createElement("button");
+            btn.textContent = "Ver análisis";
+            btn.style.marginTop = "15px";
+            btn.onclick = () => {
+                window.location.href = input + ".html";
+            };
+
+            mensaje.appendChild(document.createElement("br"));
+            mensaje.appendChild(btn);
+
         } else {
             mensaje.textContent = 
 "Código no válido. El identificador no existe en los registros forenses.";
@@ -182,6 +169,7 @@ RESULTADOS PARCIALES`;
 
 </body>
 </html>
+
 
 
 
