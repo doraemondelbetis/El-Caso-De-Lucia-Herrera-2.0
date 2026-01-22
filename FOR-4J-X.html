@@ -2,70 +2,112 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>FOR-4J-X – Determinación del Culpable</title>
+<title>FOR-4J-X • Sistema Forense</title>
 <style>
     body{
         margin:0;
-        background:#0b141a;
-        color:#e9edef;
-        font-family: Arial, Helvetica, sans-serif;
+        background:#0b0f14;
+        color:#d0d3d8;
+        font-family: "Courier New", monospace;
     }
-    .container{
-        max-width:800px;
+    .wrapper{
+        max-width:900px;
         margin:auto;
-        padding:30px;
+        padding:40px 20px;
     }
-    h1{
+    .hdr{
+        border:1px solid #2a3442;
+        padding:20px;
+        border-radius:8px;
+        background:#111821;
         text-align:center;
-        color:#00b894;
+        margin-bottom:30px;
     }
-    .input-area{
-        margin-top:25px;
-        display:flex;
-        gap:10px;
+    .hdr h1{
+        margin:0;
+        font-size:22px;
+        color:#00e5b1;
+    }
+    .hdr p{
+        margin-top:10px;
+        font-size:13px;
+        color:#7e8a99;
+    }
+    .inp-box{
+        background:#111821;
+        border:1px solid #2a3442;
+        padding:20px;
+        border-radius:8px;
+        margin-bottom:20px;
+    }
+    label{
+        display:block;
+        margin-bottom:10px;
+        color:#9bbad1;
+        font-size:14px;
     }
     input{
-        flex:1;
-        padding:10px;
-        font-size:16px;
+        width:100%;
+        padding:12px;
+        background:#0b141a;
+        border:1px solid #364658;
         border-radius:6px;
-        border:none;
-        background:#202c33;
-        color:#fff;
+        color:#e9edef;
+        font-family:inherit;
+        font-size:15px;
     }
     button{
-        padding:10px 20px;
-        background:#0984e3;
-        color:white;
+        margin-top:15px;
+        padding:12px 25px;
+        background:#00e5b1;
         border:none;
         border-radius:6px;
         cursor:pointer;
-        font-size:16px;
+        font-family:inherit;
+        font-size:15px;
+        color:#0b0f14;
+        font-weight:bold;
     }
     button:hover{
-        background:#74b9ff;
+        background:#00c79b;
     }
     .output{
-        background:#202c33;
-        padding:20px;
+        white-space:pre-line;
+        background:#111821;
+        border:1px solid #2a3442;
+        padding:25px;
         border-radius:8px;
         margin-top:30px;
-        white-space:pre-line;
+        font-size:14px;
+        line-height:1.6;
+    }
+    .tag{
+        display:inline-block;
+        padding:3px 6px;
+        background:#0b141a;
+        border:1px solid #364658;
+        border-radius:5px;
+        font-size:12px;
+        color:#00e5b1;
+        margin-bottom:10px;
     }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrapper">
 
-<h1>FOR-4J-X – Determinación del Culpable</h1>
-<p>Introduce el nombre del sospechoso que deseas acusar:</p>
-
-<div class="input-area">
-    <input id="acusado" type="text" placeholder="Ej: Mariana, Mariana Cruz, Pedro, etc...">
-    <button onclick="procesar()">Evaluar</button>
+<div class="hdr">
+    <h1>FOR-4J-X — Determinación del Culpable</h1>
+    <p>ACCESO RESTRINGIDO | SISTEMA DE EVALUACIÓN DE SOSPECHOSOS</p>
 </div>
 
-<div id="resultado" class="output"></div>
+<div class="inp-box">
+    <label for="acusado">Introduzca nombre del sospechoso:</label>
+    <input id="acusado" type="text" placeholder="Ej: Mariana, Mariana Cruz, Pedro, etc.">
+    <button onclick="procesar()">EJECUTAR ANÁLISIS</button>
+</div>
+
+<div id="resultado" class="output" style="display:none;"></div>
 
 </div>
 
@@ -80,56 +122,76 @@ function normalizar(texto){
 
 function procesar(){
     const entrada = document.getElementById("acusado").value.trim();
-    const normalizado = normalizar(entrada);
+    if(!entrada){
+        alert("Debes escribir un nombre.");
+        return;
+    }
 
+    const normalizado = normalizar(entrada);
     const mariana = ["mariana", "marianacruz"];
 
+    let out="";
+
     if(mariana.includes(normalizado)){
-        mostrarResultado(`
-📁 ESTADO DEL CASO: VÍCTIMA ENCONTRADA CON VIDA
+        out = 
+`📂 ESTADO DEL CASO: VÍCTIMA LOCALIZADA CON VIDA
 
-Al acusar a Mariana, la fiscalía reactiva cateos internos en la universidad.
-Tras 48 horas, Lucía es localizada dentro de un almacén de materiales químicos
-en el edificio antiguo de ingeniería. Estaba deshidratada pero consciente.
+────────────────────────────────────────────────────
+RESULTADO:
+Lucía fue encontrada con vida dentro de un almacén químico
+en el edificio antiguo de ingeniería.
 
-Según informes médicos, Lucía fue sedada y mantenida inmovilizada mediante cinta industrial.
-En la zona se encontraron vasos con sedantes, cinta adhesiva y fibras textiles de uso industrial.
+La víctima presentaba signos de deshidratación, uso de cinta
+industrial en extremidades y sedación leve.
 
-La fiscalía declara que Mariana queda como sospechosa prioritaria tras inconsistencias
-detectadas en su coartada y registros visuales incompletos.
+La presión ejercida en la acusación contra 'Mariana' generó
+la orden forense que permitió el acceso a zonas restringidas.
 
-Lucía se encuentra bajo evaluación médica y en calidad de testigo clave.
-La policía científica continúa levantando pruebas en el lugar.
+EVIDENCIA RECUPERADA:
+• Restos de sedantes en vasos plásticos
+• Cinta industrial grado laboratorio
+• Fibras textiles asociadas a bodega universitaria
 
-📌 NOTA:
-"La rápida acción permitió encontrarla con vida", informó el vocero forense.
+TESTIGO:
+Lucía se encuentra estable y declara elementos incriminatorios.
 
-[FOR-4J-X] – Caso continúa bajo investigación.
-        `);
+CONCLUSIÓN:
+La acusada queda retenida bajo investigación prioritaria.
+ Caso continúa bajo cadena forense y custodia legal.
+
+Sistema: FOR-4J-X
+──────────── FIN DEL REGISTRO ────────────`;
     } else {
-        mostrarResultado(`
-📁 ESTADO DEL CASO: VÍCTIMA LOCALIZADA SIN VIDA
+        out =
+`📂 ESTADO DEL CASO: VÍCTIMA LOCALIZADA SIN VIDA
 
-Mientras se ejecutaba la orden contra "${entrada}", personal de intendencia
-descubre una bolsa negra dentro de un contenedor detrás del edificio central.
+────────────────────────────────────────────────────
+RESULTADO:
+Mientras se ejecutaban órdenes contra '${entrada}', equipo
+de intendencia encontró una bolsa negra en contenedor central.
 
-Dentro se encontraba el cuerpo de Lucía con claro signo de estrangulamiento.
-La data de muerte coincide con las últimas 10 horas. No se registran signos
-de abuso sexual, pero sí evidencia de lucha activa: uñas rotas y restos de piel.
+Lucía fue localizada en el interior sin signos vitales.
+La data de muerte coincide con las últimas 10 horas.
 
-La escena fue acordonada y la fiscalía reclasifica el caso como homicidio.
-Se sospecha participación de una persona con conocimiento interno de la universidad.
+EVIDENCIA EN ESCENA:
+• Marcas de estrangulamiento
+• Señales de lucha activa (uñas fracturadas)
+• Restos de piel en tejido interno de la bolsa
 
-📌 NOTA FORENSE:
-"El homicidio fue premeditado. Se requiere revisar cámaras internas", declaró la fiscalía.
+ANÁLISIS:
+La escena indica homicidio premeditado y traslado interno.
 
-[FOR-4J-X] – Caso reclasificado a homicidio.
-        `);
+CONCLUSIÓN:
+Acusado '${entrada}' descartado como autor directo.
+Posible implicación de persona con conocimiento interno.
+
+Sistema: FOR-4J-X
+──────────── FIN DEL REGISTRO ────────────`;
     }
-}
 
-function mostrarResultado(texto){
-    document.getElementById("resultado").innerText = texto;
+    const resultbox = document.getElementById("resultado");
+    resultbox.style.display = "block";
+    resultbox.innerText = out;
 }
 </script>
 
