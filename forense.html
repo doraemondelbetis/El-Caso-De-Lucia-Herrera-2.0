@@ -128,25 +128,11 @@
 <script>
     // CÓDIGOS FORENSES AUTORIZADOS (NO SECUENCIALES)
     const codigosForenses = [
-        "FOR-A9X-17",
-        "FOR-19Q-M4",
-        "FOR-X7-DEL",
-        "FOR-88K-Z1",
-        "FOR-QA-204",
-        "FOR-7M9-R",
-        "FOR-LX-33",
-        "FOR-91-TA",
-        "FOR-Z4-812",
-        "FOR-RN-60",
-        "FOR-5K-AL",
-        "FOR-M2-777",
-        "FOR-09-FX",
-        "FOR-NN-48",
-        "FOR-T3-900",
-        "FOR-KA-6P",
-        "FOR-4J-X",
-        "FOR-HM-302",
-        "FOR-0Z-19",
+        "FOR-A9X-17", "FOR-19Q-M4", "FOR-X7-DEL", "FOR-88K-Z1",
+        "FOR-QA-204", "FOR-7M9-R", "FOR-LX-33", "FOR-91-TA",
+        "FOR-Z4-812", "FOR-RN-60", "FOR-5K-AL", "FOR-M2-777",
+        "FOR-09-FX", "FOR-NN-48", "FOR-T3-900", "FOR-KA-6P",
+        "FOR-4J-X", "FOR-HM-302", "FOR-0Z-19",
 
         // CÓDIGO ESPECIAL (NO REPETIBLE)
         "FR-303-UNI"
@@ -156,25 +142,47 @@
         const input = document.getElementById("codigoForense").value.trim().toUpperCase();
         const mensaje = document.getElementById("mensaje");
 
+        // Limpiar el contenido previo
+        mensaje.innerHTML = "";
+
+        // Caso especial FR-303-UNI
+        if (input === "FR-303-UNI") {
+            mensaje.innerHTML =
+`CÓDIGO ESPECIAL ACEPTADO
+
+ANÁLISIS TERMINADO`;
+
+            // Crear botón dinámicamente
+            const btn = document.createElement("button");
+            btn.textContent = "Acceder a Informe Final";
+            btn.style.marginTop = "15px";
+            btn.onclick = () => {
+                window.location.href = "FR-303-UNI.html";
+            };
+
+            mensaje.appendChild(document.createElement("br"));
+            mensaje.appendChild(btn);
+            return;
+        }
+
+        // Caso general
         if (codigosForenses.includes(input)) {
-            
-            } else {
-                mensaje.textContent =
+            mensaje.textContent =
 `CÓDIGO VÁLIDO
 
 ANÁLISIS EJECUTADO
 RESULTADOS PARCIALES`;
-            }
-
         } else {
-            mensaje.textContent =
+            mensaje.textContent = 
 "Código no válido. El identificador no existe en los registros forenses.";
         }
     }
 </script>
 
+
 </body>
 </html>
+
 
 
 
