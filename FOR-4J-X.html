@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>FOR-4J-X | Determinación de Culpabilidad</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        background-color: #0b0f14;
+        color: #d0d3d8;
+    }
+
+    header {
+        background-color: #111821;
+        padding: 25px;
+        border-bottom: 2px solid #2a3442;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    header p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #8b949e;
+    }
+
+    .contenedor {
+        padding: 40px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .bloque {
+        background-color: #121a24;
+        padding: 22px;
+        margin-bottom: 30px;
+        border: 1px solid #2a3442;
+        border-radius: 5px;
+    }
+
+    .titulo {
+        font-size: 16px;
+        color: #7ea4ff;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .dato {
+        font-size: 14px;
+        line-height: 1.5rem;
+        color: #c3c8cf;
+        white-space: pre-line;
+    }
+
+    .riesgo-alto {
+        color: #ff6b6b;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <h1>FOR-4J-X — Módulo Forense</h1>
+    <p>Sistema de Determinación de Culpabilidad | Clasificación Interna</p>
+</header>
+
+<div class="contenedor">
+
+    <div class="bloque">
+        <div class="titulo">Propósito Oficial</div>
+        <div class="dato">
+            Este módulo FOR-4J-X tiene como finalidad analizar elementos del caso activo,
+            correlacionar evidencia digital y testimonios, y generar un índice estimativo
+            de culpabilidad para cada sospechoso registrado.
+        </div>
+    </div>
+
+    <div class="bloque">
+        <div class="titulo">Parámetros de Análisis</div>
+        <div class="dato">
+            • Coherencia de Testimonios
+            • Presencia en Escena
+            • Motivo Directo
+            • Beneficio Potencial
+            • Relaciones Interpersonales
+            • Pruebas Materiales
+            • Evidencia Digital
+        </div>
+    </div>
+
+    <div class="bloque">
+        <div class="titulo">Índice Automático</div>
+        <div class="dato">
+            El sistema asigna valores entre 0 y 100 por cada parámetro.
+            Los resultados se integran en un Índice Final de Culpabilidad (IFC).
+            Un IFC superior a 70 se considera <span class="riesgo-alto">ALTA PROBABILIDAD DE CULPABILIDAD</span>.
+        </div>
+    </div>
+
+    <div class="bloque">
+        <div class="titulo">Salida del Módulo</div>
+        <div class="dato">
+            Salida: { Suspect: [Nombre], IFC: [0-100], Estado: [Descartado/Neutral/Probable/Alta] }
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
