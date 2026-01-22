@@ -1,77 +1,137 @@
-// --- FOR-4J-X ---
-// Lógica principal para determinar el destino de Lucía
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>FOR-4J-X – Determinación del Culpable</title>
+<style>
+    body{
+        margin:0;
+        background:#0b141a;
+        color:#e9edef;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .container{
+        max-width:800px;
+        margin:auto;
+        padding:30px;
+    }
+    h1{
+        text-align:center;
+        color:#00b894;
+    }
+    .input-area{
+        margin-top:25px;
+        display:flex;
+        gap:10px;
+    }
+    input{
+        flex:1;
+        padding:10px;
+        font-size:16px;
+        border-radius:6px;
+        border:none;
+        background:#202c33;
+        color:#fff;
+    }
+    button{
+        padding:10px 20px;
+        background:#0984e3;
+        color:white;
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+        font-size:16px;
+    }
+    button:hover{
+        background:#74b9ff;
+    }
+    .output{
+        background:#202c33;
+        padding:20px;
+        border-radius:8px;
+        margin-top:30px;
+        white-space:pre-line;
+    }
+</style>
+</head>
+<body>
+<div class="container">
 
-function normalizar(texto) {
+<h1>FOR-4J-X – Determinación del Culpable</h1>
+<p>Introduce el nombre del sospechoso que deseas acusar:</p>
+
+<div class="input-area">
+    <input id="acusado" type="text" placeholder="Ej: Mariana, Mariana Cruz, Pedro, etc...">
+    <button onclick="procesar()">Evaluar</button>
+</div>
+
+<div id="resultado" class="output"></div>
+
+</div>
+
+<script>
+function normalizar(texto){
     return texto
         .toLowerCase()
-        .normalize("NFD")                // separa acentos
-        .replace(/[\u0300-\u036f]/g, "") // elimina acentos
-        .replace(/\s+/g, "");            // elimina espacios
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "");
 }
 
-function procesarAcusado(nombreIngresado) {
-    const nombre = normalizar(nombreIngresado);
+function procesar(){
+    const entrada = document.getElementById("acusado").value.trim();
+    const normalizado = normalizar(entrada);
 
-    // Posibles variantes equivalentes
     const mariana = ["mariana", "marianacruz"];
 
-    if (mariana.includes(nombre)) {
-        return resultadoMariana();
+    if(mariana.includes(normalizado)){
+        mostrarResultado(`
+📁 ESTADO DEL CASO: VÍCTIMA ENCONTRADA CON VIDA
+
+Al acusar a Mariana, la fiscalía reactiva cateos internos en la universidad.
+Tras 48 horas, Lucía es localizada dentro de un almacén de materiales químicos
+en el edificio antiguo de ingeniería. Estaba deshidratada pero consciente.
+
+Según informes médicos, Lucía fue sedada y mantenida inmovilizada mediante cinta industrial.
+En la zona se encontraron vasos con sedantes, cinta adhesiva y fibras textiles de uso industrial.
+
+La fiscalía declara que Mariana queda como sospechosa prioritaria tras inconsistencias
+detectadas en su coartada y registros visuales incompletos.
+
+Lucía se encuentra bajo evaluación médica y en calidad de testigo clave.
+La policía científica continúa levantando pruebas en el lugar.
+
+📌 NOTA:
+"La rápida acción permitió encontrarla con vida", informó el vocero forense.
+
+[FOR-4J-X] – Caso continúa bajo investigación.
+        `);
     } else {
-        return resultadoOtro(nombreIngresado);
+        mostrarResultado(`
+📁 ESTADO DEL CASO: VÍCTIMA LOCALIZADA SIN VIDA
+
+Mientras se ejecutaba la orden contra "${entrada}", personal de intendencia
+descubre una bolsa negra dentro de un contenedor detrás del edificio central.
+
+Dentro se encontraba el cuerpo de Lucía con claro signo de estrangulamiento.
+La data de muerte coincide con las últimas 10 horas. No se registran signos
+de abuso sexual, pero sí evidencia de lucha activa: uñas rotas y restos de piel.
+
+La escena fue acordonada y la fiscalía reclasifica el caso como homicidio.
+Se sospecha participación de una persona con conocimiento interno de la universidad.
+
+📌 NOTA FORENSE:
+"El homicidio fue premeditado. Se requiere revisar cámaras internas", declaró la fiscalía.
+
+[FOR-4J-X] – Caso reclasificado a homicidio.
+        `);
     }
 }
 
-// === Si acusan a Mariana o Mariana Cruz ===
-function resultadoMariana() {
-    return `
-📁 ESTADO DEL CASO: ENCONTRADA CON VIDA
-
-La acusación recae sobre Mariana, lo que moviliza a la fiscalía a reabrir las búsquedas internas.
-Tras 48 horas de cateos y análisis de cámaras, se encuentra a Lucía escondida en un laboratorio
-abandonado dentro del bloque antiguo de la Facultad de Ingeniería.
-
-Lucía estaba deshidratada y asustada, pero sin heridas graves aparentes. Los doctores indican
-que fue sedada en algún momento de las últimas 72 horas. La policía científica encuentra
-huellas de cinta industrial, restos de pegamento y un vaso con sedantes.
-
-La fiscal del caso confirma que Mariana queda como sospechosa prioritaria mientras Lucía
-declara bajo vigilancia médica.
-
-📌 NOTA:
-"El hallazgo fue posible gracias a inconsistencias en la coartada de Mariana", informó la fiscalía.
-
-[FOR-4J-X] – Caso continúa en fase investigativa.
-    `.trim();
+function mostrarResultado(texto){
+    document.getElementById("resultado").innerText = texto;
 }
+</script>
 
-// === Si acusan a alguien más ===
-function resultadoOtro(nombreIngresado) {
-    return `
-📁 ESTADO DEL CASO: VÍCTIMA LOCALIZADA SIN VIDA
-
-La acusación fue dirigida contra "${nombreIngresado}". Sin embargo, mientras el juez autoriza
-la orden de detención, personal de intendencia descubre una bolsa negra en un contenedor detrás
-del edificio central de la universidad.
-
-Dentro se encontraba el cuerpo de Lucía, con signos de estrangulamiento y envoltura de basura
-industrial usada por laboratorios. La escena fue acordonada inmediatamente.
-
-Peritos indican que la data de muerte es reciente (entre 8 y 12 horas). No hay signos de
-abuso sexual, pero sí de lucha defensiva: uñas rotas, abrasiones y rastros de piel ajena.
-
-La muerte de Lucía altera por completo el enfoque del caso y ahora la fiscalía considera
-que hubo premeditación y participación experta.
-
-📌 NOTA:
-"Alguien planeó esto dentro de la universidad", declara el vocero policial.
-
-[FOR-4J-X] – Caso reclasificado a homicidio.
-    `.trim();
-}
-
-// Ejemplo de uso:
-// console.log(procesarAcusado("Mariana Cruz"));
-// console.log(procesarAcusado("Pedro"));
-// console.log(procesarAcusado("marÍana"));
-// console.log(procesarAcusado("MARIANA   CRUZ"));
+</body>
+</html>
